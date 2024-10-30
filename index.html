@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>change Password</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+</head>
+<body>
+
+    <section class="text-center flex flex-col justify-center items-center">
+        <div class="2xl:container">
+            <div class="mx-auto grid grid-cols-1">
+                <form id="frm" >
+                    <h1 class="text-[30px]">Update Password</h1>
+                    <p>New Password</p>
+                    <input type="password" id="pass" placeholder="New Password" class="p-[10px] border border-black">
+                    <p id="emp" class="text-[red] flex justify-start"></p>
+                    <p>Confirm Password</p>
+                    <input type="password" id="word" placeholder="Confirm Password" class="p-[10px] border border-black">
+                    <p id="cemp" class="text-[red] flex justify-start"></p>  
+                    <button id="up" class="bg-[blue] text-[white] p-[5px] mt-[10px]">Update</button>
+                </form>
+                
+            </div>
+        </div>
+    </section>
+    
+
+
+    <script>
+        const newpass = document.getElementById("pass");
+        const conpass = document.getElementById("word");
+        const form = document.getElementById("frm");
+        const empty = document.getElementById("emp");
+        const confirmempty = document.getElementById("cemp");
+        const updates = document.getElementById("up");
+
+
+        function validation(newpassword,conpassword){
+
+            if(!newpassword.match(conpassword)){
+                confirmempty.textContent ="*Password did not match";
+            }
+            else{
+                confirmempty.textContent =" ";
+            }
+
+
+
+
+            if(newpassword.length === 0){
+                empty.textContent ="*Required"
+            }
+            else{
+                empty.textContent = " ";
+            }
+
+        }
+
+        form.addEventListener("submit",(e)=>{
+            e.preventDefault();
+
+
+            const newpassword = newpass.value;
+            const conpassword = conpass.value;
+
+            validation(newpassword,conpassword)
+
+        })
+
+    </script>
+</body>
+</html>
